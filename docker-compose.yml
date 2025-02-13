@@ -10,16 +10,16 @@ services:
     depends_on:
       - dynamodb
 
+
   frontend:
     build: ./frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend:/app
+      - .:/frontend/app
+      - /frontend/node_modules
     environment:
-      - NODE_ENV=development
-    depends_on:
-      - backend
+      - CHOKIDAR_USEPOLLING=true
 
   dynamodb:
     image: amazon/dynamodb-local:latest
