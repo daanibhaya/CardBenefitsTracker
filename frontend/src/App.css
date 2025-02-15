@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: center;  
 }
 
 .logo {
@@ -39,4 +39,23 @@
 
 .read-the-docs {
   color: #888;
+}
+.cardTable {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  border: 2px solid white;
+}
+th {
+  border-bottom: 1px solid white;
+}
+td {
+  text-align: center;
+}
+.cardName {
+  text-align: left;
 }
