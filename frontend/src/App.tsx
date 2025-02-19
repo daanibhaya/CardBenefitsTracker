@@ -1,39 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useMemo, useState } from 'react'
+import {
+  MaterialReactTable,
+  useMaterialReactTable,
+  type MRT_ColumnDef,
+} from 'material-react-table';
 import './App.css'
 
-const cardData = [
-  { name: "Discover", grocery: "1%", restaraunt: "5%", amazon: "-" },
-  { name: "Chase", grocery: "2%", restaraunt: "1%", amazon: "-"},
-  { name: "Citi", grocery: "1%", restaraunt: "-", amazon: "5%"}
-]
+type Card = {
+  name: string;
+  grocery: string;
+  restaraunt: string;
+  amazon: string;
+};
+const data: Card[] = [
+  { name: 'Discover', grocery: '1%', restaraunt: '5%', amazon: '-' },
+  { name: 'Chase', grocery: '2%', restaraunt: '1%', amazon: '-'},
+  { name: 'Citi', grocery: '1%', restaraunt: '-', amazon: '5%'}
+];
+const App = () => {  
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-      <div className="cardTable">
-        <table>
-          <tr>
-            <th>Card</th>
-            <th>Grocery</th>
-            <th>Restaraunt</th>
-            <th>Amazon</th>
-          </tr>
-          {cardData.map((val, key) => {
-            return (
-              <tr key={key}>
-                <td className="cardName">{val.name}</td>
-                <td>{val.grocery}</td>
-                <td>{val.restaraunt}</td>
-                <td>{val.amazon}</td>
-              </tr>
-            )
-          })}
-        </table>
-      </div>
+  const columns = useMemo<MRT_ColumnDef<Card>[]>(
+    () => [
+      { accessorKey: 'name',
+        header: 'Name',
+      },
+      { accessorKey: 'grocery',
+        header: 'Grocery'
+      },
+      { accessorKey: 'restaraunt',
+        header: 'Restaraunt'
+      },
+      { accessorKey: 'amazon',
+        header: 'Amazon'
+      },
+    ],
+    [],
   );
+
+  const table = useMaterialReactTable({
+    columns,
+    data,
+  });
+
+  return <MaterialReactTable table={table} />;
 }
 
 export default App
