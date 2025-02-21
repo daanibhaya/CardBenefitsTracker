@@ -1,15 +1,18 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "Backend for Credit Benefit Tracker",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "aws-sdk": "^2.1234.0"
+  },
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
