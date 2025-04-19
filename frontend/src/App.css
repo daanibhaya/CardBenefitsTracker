@@ -5,23 +5,22 @@
   text-align: center;  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-
-.read-the-docs {
-  color: #888;
-}
 table {
   border: 2px solid white;
   border-collapse: collapse;
 }
+
 th,
 td {
   border: 1px solid white;
   text-align: center;
   padding: 8px
+}
+
+th {
+  font-size: large;
+}
+
+td {
+  font-size: medium;
 }
