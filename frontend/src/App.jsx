@@ -1,31 +1,27 @@
 import { useState } from 'react'
+import uuid from 'react-native-uuid'
 import './App.css'
-import { CardRow } from './components/CardRow.jsx'
+import { TableHead } from './components/TableHead.jsx'
+import { TableBody } from './components/TableBody.jsx'
 
 export const App = () => {
   const [cards, setCards] = useState([
-    { name: 'Discover', grocery: 1, restaraunt: 5, amazon: 0 },
-    { name: 'Chase', grocery: 2, restaraunt: 1, amazon: 0 },
-    { name: 'Citi', grocery: 1, restaraunt: 0, amazon: 5 },
-    { name: 'test1', grocery: 2, restaraunt: 0, amazon: 0 }
+    { id: uuid.v4(), name: 'Discover', grocery: 1, restaraunt: 5, amazon: 0 },
+    { id: uuid.v4(), name: 'Chase', grocery: 2, restaraunt: 1, amazon: 0 },
+    { id: uuid.v4(), name: 'Citi', grocery: 1, restaraunt: 0, amazon: 5 },
+    { id: uuid.v4(), name: 'test1', grocery: 2, restaraunt: 0, amazon: 0 }
   ]);
+  const columns = [
+    { label: 'Grocery', accessor: 'grocery' },
+    { label: 'Restaraunt', accessor: 'restaraunt' },
+    { label: 'Amazon', accessor: 'amazon' }
+  ]
   
   return (
     <div>
       <table>
-        <thead>
-          <tr>
-            <th>Credit Card</th>
-            <th>Grocery</th>
-            <th>Restaraunt</th>
-            <th>Amazon</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cards.map((card, index) => (
-            <CardRow card={card}/>
-          ))}
-        </tbody>
+        <TableHead columns={columns} />
+        <TableBody cards={cards} columns={columns} />
       </table>
     </div>
   )
