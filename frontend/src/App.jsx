@@ -4,10 +4,10 @@ import { CardRow } from './components/CardRow.jsx'
 
 export const App = () => {
   const [cards, setCards] = useState([
-    { name: 'Discover', grocery: 1, restaraunt: 5,  },
-    { name: 'Chase', grocery: 2, restaraunt: 1 },
-    { name: 'Citi', grocery: 1, amazon: 5 },
-    { name: 'test1', grocery: 2 }
+    { name: 'Discover', grocery: 1, restaraunt: 5, amazon: 0 },
+    { name: 'Chase', grocery: 2, restaraunt: 1, amazon: 0 },
+    { name: 'Citi', grocery: 1, restaraunt: 0, amazon: 5 },
+    { name: 'test1', grocery: 2, restaraunt: 0, amazon: 0 }
   ]);
   
   return (
