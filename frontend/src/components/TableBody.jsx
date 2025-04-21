@@ -8,7 +8,7 @@ export const TableBody = ({ cards, columns }) => {
                     <td>{card.name}</td>
                     {columns.map(({accessor}) => (
                         <td key={accessor}>
-                            {card[accessor]}
+                            {card[accessor] ? card[accessor] + '%' : '-' }
                         </td>
                     ))}
                 </tr>
