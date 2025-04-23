@@ -7,5 +7,4 @@ describe("App Component", () => {
         render(<App />);
         screen.debug();
     });
-
 })

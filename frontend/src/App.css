@@ -24,3 +24,8 @@ th {
 td {
   font-size: medium;
 }
+
+button {
+  border-radius: 12px;
+  background-color: darkgrey;
+}
