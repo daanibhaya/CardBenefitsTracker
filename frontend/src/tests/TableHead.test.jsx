@@ -11,6 +11,6 @@ const columns = [
 describe('Table column header', () => {
     it ('displays correct column names', () => {
         render(<TableHead columns={columns} />);
-        expect(screen.getByText('Grocery')).toBeInTheDocument();
+        expect(screen.getByText('Restaraunt')).toBeInTheDocument();
     })
 })

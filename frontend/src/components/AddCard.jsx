@@ -21,7 +21,7 @@ export const AddCard = ({ columns, addCard }) => {
            {columns.map((column, index) => (
             <div key={index}>
                 <label for={column.accessor}>{column.label}</label>
-                <input type="number" name={column.accessor} min={0} value={inputs[column.accessor] || 0} onChange={handleChange}/>
+                <input type="number" name={column.accessor} min={0} max ={9} value={inputs[column.accessor] || 0} onChange={handleChange}/>
             </div>
            ))}
            <button type="submit" >Add</button>

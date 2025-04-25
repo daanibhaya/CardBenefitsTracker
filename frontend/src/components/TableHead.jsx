@@ -8,6 +8,7 @@ export const TableHead = ({ columns }) => {
                 {columns.map((column) => (
                     <th key={column.accessor}>{column.label}</th>
                 ))}
+                <th>Actions</th>
             </tr>
         </thead>
     )

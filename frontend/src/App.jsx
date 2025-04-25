@@ -13,9 +13,9 @@ export const App = () => {
     { id: uuid.v4(), name: 'test1', grocery: 2, restaraunt: 0, amazon: 0 }
   ]);
   const columns = [
-    { label: 'Grocery', accessor: 'grocery' },
     { label: 'Restaraunt', accessor: 'restaraunt' },
-    { label: 'Amazon', accessor: 'amazon' }
+    { label: 'Grocery', accessor: 'grocery' },
+    { label: 'Amazon', accessor: 'amazon' },
   ]
   const [adding,setAdding] = useState(false)
 
@@ -27,13 +27,16 @@ export const App = () => {
     setCards([...cards, newCard])
     toggleAdding()
   }
+  const deleteCard = (id) => {
+    setCards(cards.filter(((card) => card.id !== id)))
+  }
   
   return (
     <div>
       <h1>Cashback Benefits</h1>
       <table>
         <TableHead columns={columns} />
-        <TableBody cards={cards} columns={columns} />
+        <TableBody cards={cards} columns={columns} deleteCard={deleteCard} />
       </table>
       {adding ? (
         <div>
