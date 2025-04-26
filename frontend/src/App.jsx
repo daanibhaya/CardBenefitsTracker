@@ -4,6 +4,7 @@ import './App.css'
 import { TableHead } from './components/TableHead.jsx'
 import { TableBody } from './components/TableBody.jsx'
 import { AddCard } from './components/AddCard.jsx'
+import { Modal } from './components/Modal.jsx'
 
 export const App = () => {
   const [cards, setCards] = useState([
@@ -18,11 +19,12 @@ export const App = () => {
     { label: 'Amazon', accessor: 'amazon' },
   ]
   const [adding,setAdding] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [cardEdit, setCardEdit] = useState(null)
 
   const toggleAdding = () => {
     setAdding(!adding)
   }
-
   const addCard = (newCard) => {
     setCards([...cards, newCard])
     toggleAdding()
@@ -30,20 +32,30 @@ export const App = () => {
   const deleteCard = (id) => {
     setCards(cards.filter(((card) => card.id !== id)))
   }
+  const handleCardEdit = (card) => {
+    setCardEdit(card)
+    setModalOpen(true)
+  }
+  const closeModal = () => {
+    setModalOpen(false)
+  }
+
   
   return (
     <div>
       <h1>Cashback Benefits</h1>
       <table>
         <TableHead columns={columns} />
-        <TableBody cards={cards} columns={columns} deleteCard={deleteCard} />
+        <TableBody cards={cards} columns={columns} deleteCard={deleteCard} cardEdit={handleCardEdit}/>
       </table>
+      {modalOpen && <Modal closeModal={closeModal} />}
       {adding ? (
         <div>
           <AddCard columns={columns} addCard={addCard} />
         </div>) : 
         (<button onClick={toggleAdding}>Add</button>
       )}
+      
     </div>
   )
 }
