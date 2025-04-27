@@ -12,7 +12,7 @@ export const TableBody = ({ cards, columns, deleteCard, cardEdit }) => {
                         </td>
                     ))}
                     <td>
-                        <button onClick={() => cardEdit(card)}>E</button>
+                        <button onClick={() => cardEdit(card.id)}>E</button>
                         <button onClick={() => deleteCard(card.id)}>D</button>
                     </td>
                 </tr>

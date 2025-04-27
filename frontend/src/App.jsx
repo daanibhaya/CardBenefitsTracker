@@ -32,8 +32,8 @@ export const App = () => {
   const deleteCard = (id) => {
     setCards(cards.filter(((card) => card.id !== id)))
   }
-  const handleCardEdit = (card) => {
-    setCardEdit(card)
+  const handleCardEdit = (id) => {
+    setCardEdit(id)
     setModalOpen(true)
   }
   const closeModal = () => {
@@ -48,7 +48,7 @@ export const App = () => {
         <TableHead columns={columns} />
         <TableBody cards={cards} columns={columns} deleteCard={deleteCard} cardEdit={handleCardEdit}/>
       </table>
-      {modalOpen && <Modal closeModal={closeModal} />}
+      {modalOpen && <Modal closeModal={closeModal} columns={columns} cardEdit={cardEdit} />}
       {adding ? (
         <div>
           <AddCard columns={columns} addCard={addCard} />
