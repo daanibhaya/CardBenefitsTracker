@@ -26,7 +26,7 @@ export const Modal = ({ closeModal, columns, cardEdit, updateCard }) => {
 			<div className="modal">
 				<form>
 					<div>
-						<label for="name">Name</label>
+						<label for="name">Name </label>
 						<input
 							type="text"
 							name="name"
@@ -36,7 +36,7 @@ export const Modal = ({ closeModal, columns, cardEdit, updateCard }) => {
 					</div>
 					{columns.map((column, index) => (
 						<div key={index}>
-							<label for={column.accessor}>{column.label}</label>
+							<label for={column.accessor}>{column.label} </label>
 							<input
 								type="number"
 								name={column.accessor}
@@ -48,9 +48,11 @@ export const Modal = ({ closeModal, columns, cardEdit, updateCard }) => {
 						</div>
 					))}
 				</form>
-				<button type="submit" onClick={handleSubmit}>
-					Save
-				</button>
+				<div>
+					<button className="modal-button" type="submit" onClick={handleSubmit}>
+						Save
+					</button>
+				</div>
 			</div>
 		</div>
 	);
