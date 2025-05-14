@@ -38,7 +38,7 @@ export const App = () => {
 	const deleteCard = (id) => {
 		setCards(cards.filter((card) => card.id !== id));
 	};
-	const handleCardEdit = (id) => {
+	const handleEditCard = (id) => {
 		setCardEdit(cards.find((card) => card.id === id));
 		console.log(cardEdit);
 		setModalOpen(true);
@@ -56,7 +56,7 @@ export const App = () => {
 					cards={cards}
 					columns={columns}
 					deleteCard={deleteCard}
-					cardEdit={handleCardEdit}
+					editCard={handleEditCard}
 				/>
 			</table>
 			{modalOpen && (

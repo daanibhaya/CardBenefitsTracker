@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TableBody = ({ cards, columns, deleteCard, cardEdit }) => {
+export const TableBody = ({ cards, columns, deleteCard, editCard }) => {
 	return (
 		<tbody>
 			{cards.map((card) => (
@@ -8,11 +8,13 @@ export const TableBody = ({ cards, columns, deleteCard, cardEdit }) => {
 					<td>{card.name}</td>
 					{columns.map(({ accessor }) => (
 						<td key={accessor}>
-							{card[accessor] ? card[accessor] + "%" : "-"}
+							{card[accessor] && card[accessor] != 0
+								? card[accessor] + "%"
+								: "-"}
 						</td>
 					))}
 					<td>
-						<button onClick={() => cardEdit(card.id)}>E</button>
+						<button onClick={() => editCard(card.id)}>E</button>
 						<button onClick={() => deleteCard(card.id)}>D</button>
 					</td>
 				</tr>
