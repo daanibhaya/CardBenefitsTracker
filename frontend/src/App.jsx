@@ -13,15 +13,15 @@ export const App = () => {
 		{ id: uuid.v4(), name: "Citi", grocery: 1, restaraunt: 0, amazon: 5 },
 		{ id: uuid.v4(), name: "test1", grocery: 2, restaraunt: 0, amazon: 0 },
 	]);
-	const columns = [
+	const [columns, setColumns] = useState([
 		{ label: "Restaraunt", accessor: "restaraunt" },
 		{ label: "Grocery", accessor: "grocery" },
 		{ label: "Amazon", accessor: "amazon" },
-	];
+	]);
 	const [adding, setAdding] = useState(false);
 	const [modalOpen, setModalOpen] = useState(false);
 	const [cardEdit, setCardEdit] = useState(null);
-
+	const [col, setCol] = useState("");
 	const toggleAdding = () => {
 		setAdding(!adding);
 	};
@@ -42,6 +42,24 @@ export const App = () => {
 		setCardEdit(cards.find((card) => card.id === id));
 		console.log(cardEdit);
 		setModalOpen(true);
+	};
+	const addColumn = (c) => {
+		console.log(c);
+		const newLabel = c.toLowerCase();
+		console.log(newLabel);
+		console.log(String(newLabel).charAt(0).toUpperCase() + String(newLabel));
+		setColumns([
+			...columns,
+			{
+				label: newLabel,
+				accessor: String(newLabel).charAt(0).toUpperCase() + String(newLabel),
+			},
+		]);
+	};
+	const handleColumn = (e) => {
+		e.preventDefault();
+		addColumn(col);
+		console.log(columns);
 	};
 	const closeModal = () => {
 		setModalOpen(false);
@@ -74,6 +92,10 @@ export const App = () => {
 			) : (
 				<button onClick={toggleAdding}>Add</button>
 			)}
+			<form onSubmit={handleColumn}>
+				<input type="text" onChange={(e) => setCol(e.target.value)} />
+				<button type="submit">add column</button>
+			</form>
 		</div>
 	);
 };
